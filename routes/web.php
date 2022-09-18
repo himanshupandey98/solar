@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postcontroller;
-use App\Http\Controllers\LoginController;
+
 use App\Http\Controllers\membercontroller;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\profilecontroller;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterController;
 
 
@@ -21,15 +22,18 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', [postcontroller::class,'index']);
-Route::get('/member', [membercontroller::class,'index']);
-Route::get('/member/{id}', [profilecontroller::class,'show']);
+Route::resource('/post', postcontroller::class)->middleware('auth');
 
-Route::post('/comment/{id}', [CommentController::class,'store']);
+Route::get('/member', [membercontroller::class,'index'])->middleware('auth');
 
-Route::resource('/login', LoginController::class);
+
+Route::resource('/profile',profilecontroller::class)->middleware('auth');
+
+Route::post('/comment/{id}', [CommentController::class,'store'])->middleware('auth');
+
+
 Route::resource('/regis', RegisterController::class);
-
-
+Route::resource('/session', SessionController::class);
 
 
 

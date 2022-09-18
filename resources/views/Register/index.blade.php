@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login 10</title>
+  	<title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -35,6 +35,7 @@
 		      
 		      	<form action="/regis" class="signin-form" method="post">
                   @csrf
+				 
 
                 
                <div class="text-center  mb-3 mt-3">

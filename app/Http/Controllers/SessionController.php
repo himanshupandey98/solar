@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +23,8 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
+        return "this is create";
         return view('Login.Create');
     }
 
@@ -34,7 +36,23 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes=request()->validate([
+            'email'=>'required',
+            'password'=>'required',
+
+        ]);
+       
+
+       
+        
+        if(auth()->attempt($attributes)){
+
+            session()->regenerate();
+            return redirect('/')->with('success','You Are Logged In !');
+        }
+        else{
+            return redirect('/login')->withInput()->with('success','please check email and password again');
+        }
     }
 
     /**
@@ -77,8 +95,9 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(){
+        
+        auth()->logout();
+            return redirect('/')->with('success','Good bye !');
     }
 }

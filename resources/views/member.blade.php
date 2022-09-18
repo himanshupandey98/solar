@@ -23,7 +23,7 @@
 
 @if($member->count())
 @foreach($member as $member)
-  <x-user :member="$member" /> 
+  <x-user  :member="$member" /> 
  @endforeach 
  @else
  <div class="text-center mt-5 text-gray-400 font-semibold">

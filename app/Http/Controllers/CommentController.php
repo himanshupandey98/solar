@@ -35,8 +35,11 @@ class CommentController extends Controller
      */
     public function store($id,Request $request)
     {
+      
         $attributes=request()->validate(['comments'=>'required']);
         $attributes['post_id']=$id;
+        $attributes['user_id']=auth()->user()->id;
+
         Comment::create($attributes);
 
         return back();

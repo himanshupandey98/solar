@@ -5,7 +5,7 @@
     <div class=" border border-gray-100 px-2 w-full py-3 inline-flex">
         <img  class="flex-shrink-0 rounded-circle " src="https://source.unsplash.com/random/?city,night/{{5}}" alt="" width="60" height="40" >
      <div class="px-3">
-        <p class="text-xl font-semibold"><a href="/member/{{($post->id)}}">{{ucwords($post->user->name)}}</a></p>
+        <p class="text-xl font-semibold"><a href="/profile/{{($post->user->id)}}">{{ucwords($post->user->name)}}</a></p>
         <p class="text-sm font-semibold">{{$post->user->category->category}} in {{ucwords($post->location)}}</p>
         <p class="text-xs text-gray-500 pt-2">{{$post->created_at->diffForHumans()}}.</p>
 </div>
@@ -15,6 +15,9 @@
 
 <div class="col-start-2 col-span-2 border border-gray-100">
         <img class="p-1 " src="https://source.unsplash.com/random/?city,night/{{$post->id}}" alt="" >
+        <div class="py-1 px-1  text-center font  border-bottom">
+           <span class="font-semibold text-l text-gray-700">{{ucwords($post->sitename)}}</span>
+        </div>
         <div class="pt-5 px-1">
             <form action="/comment/{{$post->id}}"  method="post">
                 @csrf
@@ -34,7 +37,7 @@
             <x-comment :comment="$comment" :post="$post"/>
                @endforeach
         </div> 
-                
+     
     </div>
   
     </div>

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('gstno')->nullable();
             $table->string('address')->nullable();
             $table->string('location')->nullable();
-
+            $table->string('sites')->nullable();
             $table->text('wiringcharge')->nullable();
             $table->text('structurecharge')->nullable();
             $table->text('totalcharge')->nullable();
