@@ -45,11 +45,13 @@ class PostController extends Controller
             'user_id'=>'',
             'sitename'=>'required',
             'sitedetail'=>'required',
+            'image'=>'mimes:JPG,JPEG,PNG',
+
             'address'=>'required',
             'location'=>'required',
     
            ]);
-    
+           $attributes['image']=request()->file('image')->store('public');
            post::where('id',request('id'))->update($attributes);
            return redirect("/profile/{$attributes['user_id']}");
      

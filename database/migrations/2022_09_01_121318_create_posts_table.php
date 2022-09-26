@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('sitename');
             $table->string('sitedetail');
             $table->string('address');
+            $table->string('image')->nullable();
 
             $table->string('location');
             $table->timestamps();

@@ -3,7 +3,7 @@
 <div id="post" class="lg:grid grid-cols-5 m-2 ">
     <div class="hover:bg-blue-100 col-start-2 col-span-2">
     <div class=" border border-gray-100 px-2 w-full py-3 inline-flex">
-        <img  class="flex-shrink-0 rounded-circle " src="https://source.unsplash.com/random/?city,night/{{5}}" alt="" width="60" height="40" >
+        <img  class="shrink-1 rounded-circle " src="https://source.unsplash.com/random/?city,night/{{5}}" alt="" width="60" height="40" >
      <div class="px-3">
         <p class="text-xl font-semibold"><a href="/profile/{{($post->user->id)}}">{{ucwords($post->user->name)}}</a></p>
         <p class="text-sm font-semibold">{{$post->user->category->category}} in {{ucwords($post->location)}}</p>
@@ -14,7 +14,7 @@
 
 
 <div class="col-start-2 col-span-2 border border-gray-100">
-        <img class="p-1 " src="https://source.unsplash.com/random/?city,night/{{$post->id}}" alt="" >
+        <img class="p-1 flex-shrink-2 " src="https://source.unsplash.com/random/?city,night/{{$post->id}}" alt="" width="100%" height="50">
         <div class="py-1 px-1  text-center font  border-bottom">
            <span class="font-semibold text-l text-gray-700">{{ucwords($post->sitename)}}</span>
         </div>
@@ -33,9 +33,13 @@
             </div>
             
             </form>
+            @if($post->comment->count())
+            <div class=" {{($post->comment->count() > 2)?'h-80 overflow-auto':'';}}">
             @foreach($post->comment as $comment)
             <x-comment :comment="$comment" :post="$post"/>
-               @endforeach
+             @endforeach
+               </div>
+               @endif
         </div> 
      
     </div>

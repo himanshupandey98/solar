@@ -6,7 +6,7 @@
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
-<div class="bg-gray-100 py-3  drop-shadow-xl flex w-100 ">
+<div class="bg-gray-100 py-3 shadow-xl flex w-100 fixed-top">
 <div class="col-md-auto mx-5">
              <b class="col-md-auto ">HPsol</b>
         </div>
@@ -15,19 +15,20 @@
      
        
        <div class="col-md-auto">
-        <a href="/" class="uppercase px-3 font-bold  hover:text-blue-500 text-blue-600  "><i class="fa-solid fa-house"></i> Post</a>
+        <a href="/" class="uppercase px-3 font-bold  hover:text-blue-500  {{Route::current()->uri=='/'? 'text-blue-500' : '';}} "><i class="fa-solid fa-house"></i> Post</a>
         </div>
+       
         <div class="col-md-auto">
-            <a href="/member" class="uppercase px-3 font-bold hover:text-blue-500  "><i class="fa-solid fa-user"></i> members</a>
+            <a href="/member" class="uppercase px-3 font-bold hover:text-blue-500 {{Route::current()->uri=='member' ? 'text-blue-500' : '';}}"><i class="fa-solid fa-user"></i> members</a>
         </div>
-        <div class="col-md-auto px-3 font-bold  hover:text-blue-500"  x-data="{ show:false}" @click.away="show=false">
+        <div class="col-md-auto px-3 font-bold  hover:text-blue-500 "  x-data="{ show:false}" @click.away="show=false">
         <button class="uppercase" @click="show=! show"><i class="fa-solid fa-gear"></i> account settings
         </button>
 
         <div x-show="show" class="bg-gray-200 rounded-xl absolute w-40 mt-2 py-2" style="display:none">
-                <a href="/post/create"  class="block text-left px-3 text-sm">Add My Post</a>
-                <a href=""  class="block text-left px-3 text-sm">Change Password</a>
-                <a href="/profile/{{auth()->user()->id??null}}"  class="block text-left px-3 text-sm">My profile</a>
+                <a href="/post/create"  class="block text-left px-3 py-1 text-sm">Add My Post</a>
+                <a href=""  class="block text-left px-3 text-sm py-1">Change Password</a>
+                <a href="/profile/{{auth()->user()->id??null}}"  class="block text-left px-3 text-sm py-1">My profile</a>
 
         </div>
        </div>
@@ -63,16 +64,28 @@
 
 </div>
 
-<body >
- 
 @if (session()->has('success'))
 
-<div x-data="{ show:true }"
+<div x-data="{ show:true }" 
 x-init="setTimeout(()=>show=false,4000)" x-show="show">
-    <p class="fixed top-10 left-4 bg-blue-500 text-white rounded-xl text-sm py-2 px-4">
+    <p id="greet" class="fixed top-10 left-4 bg-blue-500 text-white rounded-xl text-sm py-2 px-4">
         {{session('success')}}</p>
 </div>
 @endif
+<body class="main" >
+ 
+
 {{$slot}}   
 </body>
 
+
+<footer>
+        
+        <div class="text-center pt-4 h6">
+                <p class="py-4 bg-info">
+
+                </p>
+               <p class="bg-secondary py-3">
+                Created by Himanshu Pandey under Axixa Technologies</p> 
+        </div>
+</footer>

@@ -62,9 +62,12 @@
 		      		</div>
 
                       <div class="form-group pt-3">
-		      			<textarea name="sitedetail" class="form-control border" placeholder="Enter sitedetail" required value="{{old('sitedetail')}}"></textarea>
+		      			<textarea name="sitedetail" class="form-control border" placeholder="Enter sitedetail" required >{{$data->sitedetail}}</textarea>
 		      		</div>
 
+					  <div class="form-group pt-3">
+		      			<input type="file" name="image" class="form-control border" placeholder="Enter image" required value="{{$data->image}}">
+		      		</div>
                       <div class="form-group pt-3">
 		      			<input type="text" name="address" class="form-control border" placeholder="Enter address" required value="{{$data->address}}">
 		      		</div>

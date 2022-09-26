@@ -39,3 +39,16 @@
         transform:translate(0);
     }
 }
+
+.main{
+   
+    margin-top: 100px;
+}
+#maincomment {
+    margin-top: 100px;
+}
+
+#greet {
+   top:90%;
+    width:fit-content;
+}

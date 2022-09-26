@@ -92,10 +92,12 @@
     </div>
 
     
-@if(($user->post)->count())   
+@if(($user->post)->count()) 
+
 @foreach ($user->post as $media)
-    <x-prodtl :user="$media" />
+    <x-prodtl :user="$media" :member="$user"/>
  @endforeach
+
  @else
  <div class="font-semibold text-center mt-5 text-gray-400">
     No Posts.Check After Some Time !

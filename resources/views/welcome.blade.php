@@ -6,5 +6,7 @@
   
 @endforeach
 
-
+<div class="container">
+  
+</div>
 </x-layout>

@@ -9,13 +9,19 @@
 
             
               @if(($user->comment)->count())
+              <div id="maincomment" class="h-80 overflow-scroll">
             @foreach($user->comment as $comment)
+             
               <x-comment :comment="$comment"/>
-            @endforeach
+          
+              @endforeach
+              </div>
+   
             @endif
            
         </div>
-        @if(auth()->user()->name=="$user->name")
+      
+        @if(auth()->user()->name=="$member->name")
         <div class="col text-right px-4 flex">
          
           <a href="/post/{{$user->id}}/edit" class="px-2"><i class="fa-regular fa-pen-to-square"></i></a>
